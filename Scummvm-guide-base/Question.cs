@@ -14,6 +14,13 @@ namespace Scummvm.Guide.Base {
 		private readonly Func<TState, bool> solvableCheck;
 		private readonly Func<TState, bool> solvedCheck;
 
+		public Question(string title, Func<TState, bool> discoveredCheck, Func<TState, bool> solvableCheck, Func<TState, bool> solvedCheck) {
+			Title = title ?? throw new ArgumentNullException(nameof(title));
+			this.discoveredCheck = discoveredCheck ?? throw new ArgumentNullException(nameof(discoveredCheck));
+			this.solvableCheck = solvableCheck ?? throw new ArgumentNullException(nameof(solvableCheck));
+			this.solvedCheck = solvedCheck ?? throw new ArgumentNullException(nameof(solvedCheck));
+		}
+
 		public bool IsDiscovered(TState state) => discoveredCheck(state);
 		public bool IsSolvable(TState state) => solvableCheck(state);
 		public bool IsSolved(TState state) => solvedCheck(state);

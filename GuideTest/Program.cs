@@ -11,6 +11,9 @@ namespace GuideTest {
 	class Program {
 		static void Main(string[] args) {
 			var g= new Guide<ScummState>();
+			var q= g.questions[0];
+			var s = new ScummState();
+			q.IsDiscovered(s);
 		}
 	}
 }

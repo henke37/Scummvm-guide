@@ -11,16 +11,25 @@ namespace Scummvm.Guide.Base {
 
 	public class Guide<TState> {
 
-		public IReadOnlyList<Question<TState>> SolvedQuestions;
-		public IReadOnlyList<Question<TState>> SolvableQuestions;
-		public IReadOnlyList<Question<TState>> DiscoveredQuestions;
+		public List<Question<TState>> questions;
 
-		private List<Question<TState>> questions;
+		public readonly string GameId;
+
+		public Guide() {
+			GameId = "";
+			questions = new List<Question<TState>>();
+
+			var q = new Question<TState>(
+				"Test Question",
+				MakeEvaluator("true"),
+				MakeEvaluator("CurrentRoom==42"),
+				MakeEvaluator("false")
+			);
+			questions.Add(q);
+		}
 
 		private Func<TState,bool> MakeEvaluator(string expressionStr) {
 			var expression=System.Linq.Dynamic.DynamicExpression.ParseLambda<TState,bool>(expressionStr);
-
-			//TODO:fix up the expression
 			return expression.Compile();
 		}
 	}
