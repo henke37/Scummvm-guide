@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="Current">
+	<PropertyGroup>
+    <ProjectGuid>{D3FFFD9F-9F68-409E-AF6A-AC9184FA840A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>GuideTest</RootNamespace>
+    <AssemblyName>GuideTest</AssemblyName>
+    <TargetFramework>net461</TargetFramework>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Scummvm-guide-base\Scummvm-guide-base.csproj" />
+	</ItemGroup>
+</Project>
