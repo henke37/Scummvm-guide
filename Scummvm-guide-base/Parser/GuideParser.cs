@@ -80,7 +80,8 @@ namespace Scummvm.Guide.Parser {
 		}
 
 		private void HandleHintLine(string l) {
-			throw new NotImplementedException();
+			var h = new HintEntry(l);
+			((BaseHintContainerBlock)CurrentBlock).hints.Add(h);
 		}
 
 		private void HandleQuestionBlock(string l) {
