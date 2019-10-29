@@ -6,17 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Scummvm.Guide.Parser {
-	internal class GuideBlock : Block {
+	internal class GuideBlock<TState> : Block<TState> {
 		internal Type StateType;
 		private string GameId;
 
-		internal List<QuestionBlock> questions;
+		internal List<QuestionBlock<TState>> questions;
 
 		public GuideBlock() {
-			questions = new List<QuestionBlock>();
+			questions = new List<QuestionBlock<TState>>();
 		}
 
-		internal override void Close(GuideParser guideParser) {
+		internal override void Close(GuideParser<TState> guideParser) {
 			throw new NotImplementedException();
 		}
 

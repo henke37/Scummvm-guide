@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Scummvm.Guide.Parser {
-	internal class ConditionBlock : BaseHintContainerBlock {
+	internal class ConditionBlock<TState> : BaseHintContainerBlock<TState> {
 
 		internal readonly string Condition;
 
@@ -14,7 +14,7 @@ namespace Scummvm.Guide.Parser {
 			Condition = condition;
 		}
 
-		internal override void Close(GuideParser guideParser) {
+		internal override void Close(GuideParser<TState> guideParser) {
 			throw new NotImplementedException();
 		}
 

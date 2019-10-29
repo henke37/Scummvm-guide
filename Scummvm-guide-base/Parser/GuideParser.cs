@@ -6,23 +6,23 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Scummvm.Guide.Parser {
-	internal class GuideParser {
+	internal class GuideParser<TState> {
 
 		private int currentTabLevel;
 
-		private Stack<Block> blockStack;
+		private Stack<Block<TState>> blockStack;
 
-		internal Block CurrentBlock => blockStack.Peek();
+		internal Block<TState> CurrentBlock => blockStack.Peek();
 
-		internal readonly GuideBlock guideBlock;
+		internal readonly GuideBlock<TState> guideBlock;
 
 		internal GuideParser() {
-			blockStack = new Stack<Block>();
-			guideBlock = new GuideBlock();
+			blockStack = new Stack<Block<TState>>();
+			guideBlock = new GuideBlock<TState>();
 			blockStack.Push(guideBlock);
 		}
 
-		internal void Parse(TextReader r) {
+		internal dynamic Parse(TextReader r) {
 			string sig = r.ReadLine();
 			if(sig != "DynaGuide") throw new InvalidDataException();
 
@@ -68,6 +68,14 @@ namespace Scummvm.Guide.Parser {
 						break;
 				}
 			}
+
+			return MakeGuide();
+		}
+
+		private dynamic MakeGuide() {
+			var guide = new Guide.Base.Guide<TState>();
+
+			return guide;
 		}
 
 		private void HandleElseBlock(string l) {
@@ -75,17 +83,17 @@ namespace Scummvm.Guide.Parser {
 		}
 
 		private void HandleConditionBlock(string l) {
-			var b = new ConditionBlock(l);
+			var b = new ConditionBlock<TState>(l);
 			blockStack.Push(b);
 		}
 
 		private void HandleHintLine(string l) {
 			var h = new HintEntry(l);
-			((BaseHintContainerBlock)CurrentBlock).hints.Add(h);
+			((BaseHintContainerBlock<TState>)CurrentBlock).hints.Add(h);
 		}
 
 		private void HandleQuestionBlock(string l) {
-			var b = new QuestionBlock(l);
+			var b = new QuestionBlock<TState>(l);
 			blockStack.Push(b);
 		}
 
@@ -102,14 +110,6 @@ namespace Scummvm.Guide.Parser {
 		private void CloseCurrentBlock() {
 			var b = blockStack.Pop();
 			b.Close(this);
-		}
-
-		internal dynamic InstantiateType(string typeName, params object[] vs) {
-			var t = Type.GetType(typeName);
-			t = t.MakeGenericType(guideBlock.StateType);
-
-
-			throw new NotImplementedException();
 		}
 	}
 }

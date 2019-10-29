@@ -30,18 +30,15 @@ namespace Scummvm.Guide.Base {
 			questions.Add(q);
 		}
 
-		public Guide(Stream s,Encoding enc,bool closeAfterRead=true) {
+		public static dynamic Parse(Stream s,Encoding enc,bool closeAfterRead=true) {
 			using(var r=new StreamReader(s, enc, false, 0, closeAfterRead)) {
-				Parse(r);
+				return Parse(r);
 			}
 		}
-		public Guide(TextReader r) {
-			Parse(r);
-		}
 
-		private void Parse(TextReader r) {
-			var p = new GuideParser();
-			p.Parse(r);
+		public static dynamic Parse(TextReader r) {
+			var p = new GuideParser<TState>();
+			return p.Parse(r);
 		}
 
 		private Func<TState,bool> MakeEvaluator(string expressionStr) {

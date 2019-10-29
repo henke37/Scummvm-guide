@@ -1,7 +1,7 @@
 ﻿using System.IO;
 
 namespace Scummvm.Guide.Parser {
-	internal class QuestionBlock : BaseHintContainerBlock {
+	internal class QuestionBlock<TState> : BaseHintContainerBlock<TState> {
 		internal string Title;
 		internal string Discovered;
 		internal string Solved;
@@ -12,7 +12,7 @@ namespace Scummvm.Guide.Parser {
 			this.Title = title;
 		}
 
-		internal override void Close(GuideParser guideParser) {
+		internal override void Close(GuideParser<TState> guideParser) {
 			guideParser.guideBlock.questions.Add(this);
 		}
 
