@@ -90,10 +90,11 @@ namespace Scummvm.Guide.Parser {
 		}
 
 		private void HandleMetaLine(string l) {
-			var parts=l.Split('=');
+			var eqPos = l.IndexOf('=');
+			if(eqPos == -1) throw new InvalidDataException("Missing equals sign in metaline");
 
-			var metaType = parts[0].TrimEnd();
-			var value = parts[1].Trim();
+			var metaType = l.Substring(0,eqPos).TrimEnd();
+			var value = l.Substring(eqPos+1).Trim();
 
 			CurrentBlock.HandleMetaLine(metaType, value);
 		}
