@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using Scummvm.Guide.Parser;
 
 namespace Scummvm.Guide.Base {
 
@@ -13,7 +15,7 @@ namespace Scummvm.Guide.Base {
 
 		public List<Question<TState>> questions;
 
-		public readonly string GameId;
+		public string GameId;
 
 		public Guide() {
 			GameId = "";
@@ -26,6 +28,20 @@ namespace Scummvm.Guide.Base {
 				MakeEvaluator("false")
 			);
 			questions.Add(q);
+		}
+
+		public Guide(Stream s,Encoding enc,bool closeAfterRead=true) {
+			using(var r=new StreamReader(s, enc, false, 0, closeAfterRead)) {
+				Parse(r);
+			}
+		}
+		public Guide(TextReader r) {
+			Parse(r);
+		}
+
+		private void Parse(TextReader r) {
+			var p = new GuideParser();
+			p.Parse(r);
 		}
 
 		private Func<TState,bool> MakeEvaluator(string expressionStr) {
