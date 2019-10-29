@@ -10,6 +10,12 @@ namespace Scummvm.Guide.Parser {
 		internal Type StateType;
 		private string GameId;
 
+		internal List<QuestionBlock> questions;
+
+		public GuideBlock() {
+			questions = new List<QuestionBlock>();
+		}
+
 		internal override void Close(GuideParser guideParser) {
 			throw new NotImplementedException();
 		}

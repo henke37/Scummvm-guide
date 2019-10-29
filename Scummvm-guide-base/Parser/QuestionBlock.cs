@@ -13,7 +13,7 @@ namespace Scummvm.Guide.Parser {
 		}
 
 		internal override void Close(GuideParser guideParser) {
-			throw new System.NotImplementedException();
+			guideParser.guideBlock.questions.Add(this);
 		}
 
 		internal override void HandleMetaLine(string metaType, string value) {
