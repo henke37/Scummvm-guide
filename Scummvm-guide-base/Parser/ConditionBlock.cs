@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 namespace Scummvm.Guide.Parser {
 	internal class ConditionBlock : BaseHintContainerBlock {
 
-		internal string Condition;
+		internal readonly string Condition;
 
 		internal ConditionBlock(string condition) {
-
+			Condition = condition;
 		}
 
 		internal override void Close(GuideParser guideParser) {
