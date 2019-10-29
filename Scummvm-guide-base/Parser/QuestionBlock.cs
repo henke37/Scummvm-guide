@@ -6,6 +6,7 @@ namespace Scummvm.Guide.Parser {
 		internal string Discovered;
 		internal string Solved;
 		internal string Solveable;
+		internal int Priority;
 
 		public QuestionBlock(string title) {
 			this.Title = title;
@@ -28,6 +29,9 @@ namespace Scummvm.Guide.Parser {
 					break;
 				case "Solveable":
 					Solveable = value;
+					break;
+				case "Priority":
+					Priority = int.Parse(value);
 					break;
 				default:
 					throw new InvalidDataException("Unknown metaline!");
