@@ -1,4 +1,6 @@
-﻿namespace Scummvm.Guide.Parser {
+﻿using System.IO;
+
+namespace Scummvm.Guide.Parser {
 	internal class HintEntry<TState> : BaseHintEntry<TState> {
 		internal readonly string Hint;
 
@@ -11,7 +13,13 @@
 		}
 
 		internal override void HandleMetaLine(string metaType, string value) {
-			throw new System.NotImplementedException();
+			switch(metaType) {
+				case "Id":
+					Id = value;
+					break;
+				default:
+					throw new InvalidDataException("Unknown metaline!");
+			}
 		}
 	}
 }
