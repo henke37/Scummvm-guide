@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Scummvm.Guide.Parser {
 	internal class GuideBlock<TState> : Block<TState> {
-		private string GameId;
+		public string GameId;
 
 		internal List<QuestionBlock<TState>> questions;
 

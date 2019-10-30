@@ -78,7 +78,7 @@ namespace Scummvm.Guide.Parser {
 		}
 
 		private dynamic MakeGuide() {
-			var guide = new Guide.Base.Guide<TState>();
+			var guide = new Guide.Base.Guide<TState>(guideBlock.GameId);
 
 			foreach(var questionBlock in guideBlock.questions) {
 				var q = questionBlock.MakeQuestion(this);

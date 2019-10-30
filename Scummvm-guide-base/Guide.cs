@@ -17,17 +17,9 @@ namespace Scummvm.Guide.Base {
 
 		public string GameId;
 
-		public Guide() {
-			GameId = "";
+		public Guide(string gameId) {
+			GameId = gameId;
 			questions = new List<Question<TState>>();
-
-			var q = new Question<TState>(
-				"Test Question",
-				MakeEvaluator("true"),
-				MakeEvaluator("CurrentRoom==42"),
-				MakeEvaluator("false")
-			);
-			questions.Add(q);
 		}
 
 		public static dynamic Parse(Stream s,Encoding enc,bool closeAfterRead=true) {
@@ -39,11 +31,6 @@ namespace Scummvm.Guide.Base {
 		public static dynamic Parse(TextReader r) {
 			var p = new GuideParser<TState>();
 			return p.Parse(r);
-		}
-
-		private Func<TState,bool> MakeEvaluator(string expressionStr) {
-			var expression=System.Linq.Dynamic.DynamicExpression.ParseLambda<TState,bool>(expressionStr);
-			return expression.Compile();
 		}
 	}
 }
