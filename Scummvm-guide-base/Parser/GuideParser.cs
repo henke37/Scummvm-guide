@@ -55,15 +55,12 @@ namespace Scummvm.Guide.Parser {
 						HandleMetaLine(l);
 						break;
 					case '?':
-						currentTabLevel++;
 						HandleQuestionBlock(l);
 						break;
 					case '!':
-						currentTabLevel++;
 						HandleHintLine(l);
 						break;
 					case '$':
-						currentTabLevel++;
 						if(l == "else") {
 							HandleElseBlock(l);
 						} else {
@@ -87,25 +84,30 @@ namespace Scummvm.Guide.Parser {
 			return guide;
 		}
 
+		private void PushBlock(Block<TState> block) {
+			currentTabLevel++;
+			blockStack.Push(block);
+		}
+
 		private void HandleElseBlock(string l) {
 			var c = (ConditionBlock<TState>)((BaseHintContainerBlock<TState>)CurrentBlock).hints.Last();
 			var e = new ElseBlock<TState>(c);
-			blockStack.Push(e);
+			PushBlock(e);
 		}
 
 		private void HandleConditionBlock(string l) {
 			var b = new ConditionBlock<TState>(l);
-			blockStack.Push(b);
+			PushBlock(b);
 		}
 
 		private void HandleHintLine(string l) {
 			var h = new HintEntry<TState>(l);
-			blockStack.Push(h);
+			PushBlock(h);
 		}
 
 		private void HandleQuestionBlock(string l) {
 			var b = new QuestionBlock<TState>(l);
-			blockStack.Push(b);
+			PushBlock(b);
 		}
 
 		private void HandleMetaLine(string l) {
