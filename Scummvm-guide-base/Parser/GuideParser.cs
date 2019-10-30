@@ -55,12 +55,15 @@ namespace Scummvm.Guide.Parser {
 						HandleMetaLine(l);
 						break;
 					case '?':
+						currentTabLevel++;
 						HandleQuestionBlock(l);
 						break;
 					case '!':
+						currentTabLevel++;
 						HandleHintLine(l);
 						break;
 					case '$':
+						currentTabLevel++;
 						if(l == "else") {
 							HandleElseBlock(l);
 						} else {
@@ -97,7 +100,7 @@ namespace Scummvm.Guide.Parser {
 
 		private void HandleHintLine(string l) {
 			var h = new HintEntry<TState>(l);
-			((BaseHintContainerBlock<TState>)CurrentBlock).hints.Add(h);
+			blockStack.Push(h);
 		}
 
 		private void HandleQuestionBlock(string l) {
@@ -109,7 +112,7 @@ namespace Scummvm.Guide.Parser {
 			var eqPos = l.IndexOf('=');
 			if(eqPos == -1) throw new InvalidDataException("Missing equals sign in metaline");
 
-			var metaType = l.Substring(0,eqPos).TrimEnd();
+			var metaType = l.Substring(0,eqPos).Trim();
 			var value = l.Substring(eqPos+1).Trim();
 
 			CurrentBlock.HandleMetaLine(metaType, value);

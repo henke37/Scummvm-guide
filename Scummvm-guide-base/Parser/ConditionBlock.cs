@@ -14,10 +14,6 @@ namespace Scummvm.Guide.Parser {
 			Condition = condition;
 		}
 
-		internal override void Close(GuideParser<TState> guideParser) {
-			throw new NotImplementedException();
-		}
-
 		internal override void HandleMetaLine(string metaType, string value) {
 			switch(metaType) {
 				case "Id":

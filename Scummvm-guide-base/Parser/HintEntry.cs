@@ -8,10 +8,6 @@ namespace Scummvm.Guide.Parser {
 			Hint = hint;
 		}
 
-		internal override void Close(GuideParser<TState> guideParser) {
-			throw new System.NotImplementedException();
-		}
-
 		internal override void HandleMetaLine(string metaType, string value) {
 			switch(metaType) {
 				case "Id":
