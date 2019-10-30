@@ -30,6 +30,7 @@ namespace Scummvm.Guide.Parser {
 
 			for(; ; ) {
 				var l = r.ReadLine();
+				if(l == null) break;
 
 				int tabLevel = l.LastIndexOf('\t') + 1;
 				int semiPos = l.IndexOf(';');
