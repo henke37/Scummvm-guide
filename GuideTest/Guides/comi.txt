@@ -7,6 +7,9 @@ DynaGuide
 	!From a joke perspective, they are mostly identical.
 	!But from a puzzle perspective, Mega Monkey gives by far the best experience.
 ?How do I get out of here?
+	%Solved=CurrentRoom!=9 &&CurrentRoom!=11 &&CurrentRoom!=10
+	%Solveable=true
+	%Discovered=CurrentRoom==9 ||CurrentRoom==11
 	!There are only two rooms that you can go to, shouldn't be too hard bumbling your way thru this.
 	!There is an obvious locked door on the right side, perhaps that would work?
 	!While mildy entertaining, just asking for it to be unlocked isn't going to work.
