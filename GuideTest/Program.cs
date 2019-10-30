@@ -6,14 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Scummvm.Guide;
 using DrainLib.Engines;
+using System.IO;
 
 namespace GuideTest {
 	class Program {
 		static void Main(string[] args) {
-			var g= new Guide<ScummState>();
-			var q= g.questions[0];
-			var s = new ScummState();
-			q.IsDiscovered(s);
+			using(var r = File.OpenText(args[0])) {
+				var g = Guide<ScummState>.Parse(r);
+			}
 		}
 	}
 }

@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "GuideTest": {
+      "commandName": "Project",
+      "commandLineArgs": "Guides\\comi.txt",
+      "workingDirectory": "C:\\Users\\Min Dator\\Documents\\csharp\\scummvm-guide\\Scummvm-guide\\GuideTest"
+    }
+  }
+}

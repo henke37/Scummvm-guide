@@ -1,0 +1,32 @@
+DynaGuide
+% GameId = comi
+?Which difficulty should I choose?
+	%Solved = CurrentRoom!=87
+	%Solveable=true
+	%Discovered=true
+	!From a joke perspective, they are mostly identical.
+	!But from a puzzle perspective, Mega Monkey gives by far the best experience.
+?How do I get out of here?
+	!There are only two rooms that you can go to, shouldn't be too hard bumbling your way thru this.
+	!There is an obvious locked door on the right side, perhaps that would work?
+	!While mildy entertaining, just asking for it to be unlocked isn't going to work.
+	!You are not going to find a key for it.
+	!Nor does Guybrush know how to pick locks.
+	!That only leaves the option of using force.
+	!Suffice to say, but Guybrush isn't strong enough to bash down the door on his own.
+	!The cannon has a lot of force...
+	!...what with all that recoil.
+	$GetBitVar(168)
+		!Use the cannon again.
+	$!GetBitVar(167)
+		!Too bad that it is in use.
+		!<link ref="whatSayWally">Talk to the pirate</link> and see if you can convince him to let you use the cannon.
+	&!GetBitVar(159)
+		!Try using the cannon.
+	!But the cannon is securely tied to the wall.
+	$HasItem(335)
+		!Use the sword to cut the rope.
+	!If only you had something to cut the rope with.
+	!Did you check the debree that floated to the ship after your cannon firing?
+	!There is something useful floating outside.
+	!<link ref="pickupDebree">Pick up the debree.</link>
