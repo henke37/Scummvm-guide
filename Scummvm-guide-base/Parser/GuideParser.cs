@@ -94,7 +94,7 @@ namespace Scummvm.Guide.Parser {
 		}
 
 		private void HandleHintLine(string l) {
-			var h = new HintEntry(l);
+			var h = new HintEntry<TState>(l);
 			((BaseHintContainerBlock<TState>)CurrentBlock).hints.Add(h);
 		}
 

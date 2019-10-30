@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Scummvm.Guide.Parser {
-	abstract class BaseHintContainerBlock<TState> : Block<TState> {
+	abstract class BaseHintContainerBlock<TState> : BaseHintEntry<TState> {
 
-		internal List<HintEntry> hints;
+		internal List<BaseHintEntry<TState>> hints;
 
 		protected BaseHintContainerBlock() {
-			hints = new List<HintEntry>();
+			hints = new List<BaseHintEntry<TState>>();
 		}
 	}
 }
