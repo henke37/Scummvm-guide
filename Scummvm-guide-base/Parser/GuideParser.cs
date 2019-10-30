@@ -70,6 +70,10 @@ namespace Scummvm.Guide.Parser {
 				}
 			}
 
+			for(; currentTabLevel > 0; --currentTabLevel) {
+				CloseCurrentBlock();
+			}
+
 			return MakeGuide();
 		}
 
