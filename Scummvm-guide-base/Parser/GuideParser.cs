@@ -76,6 +76,11 @@ namespace Scummvm.Guide.Parser {
 		private dynamic MakeGuide() {
 			var guide = new Guide.Base.Guide<TState>();
 
+			foreach(var questionBlock in guideBlock.questions) {
+				var q = questionBlock.MakeQuestion(this);
+				guide.questions.Add(q);
+			}
+
 			return guide;
 		}
 
@@ -111,6 +116,11 @@ namespace Scummvm.Guide.Parser {
 		private void CloseCurrentBlock() {
 			var b = blockStack.Pop();
 			b.Close(this);
+		}
+
+		internal Func<TState, bool> MakeEvaluator(string expressionStr) {
+			var expression = System.Linq.Dynamic.DynamicExpression.ParseLambda<TState, bool>(expressionStr);
+			return expression.Compile();
 		}
 	}
 }

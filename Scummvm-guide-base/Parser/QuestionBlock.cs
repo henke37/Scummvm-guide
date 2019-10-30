@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using Scummvm.Guide.Base;
+using System;
+using System.IO;
 
 namespace Scummvm.Guide.Parser {
 	internal class QuestionBlock<TState> : BaseHintContainerBlock<TState> {
@@ -36,6 +38,17 @@ namespace Scummvm.Guide.Parser {
 				default:
 					throw new InvalidDataException("Unknown metaline!");
 			}
+		}
+
+		internal Question<TState> MakeQuestion(GuideParser<TState> guideParser) {
+			var q= new Question<TState>(
+				Title,
+				guideParser.MakeEvaluator(Discovered),
+				guideParser.MakeEvaluator(Solveable),
+				guideParser.MakeEvaluator(Solved)
+			);
+
+			return q;
 		}
 	}
 }
