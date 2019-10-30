@@ -33,3 +33,69 @@ DynaGuide
 	!Did you check the debree that floated to the ship after your cannon firing?
 	!There is something useful floating outside.
 	!<link ref="pickupDebree">Pick up the debree.</link>
+?What should I say to the pirate?
+	%Solved=GetBitVar(167)
+	%Solveable=true
+	%Discovered=CurrentRoom==9 ||CurrentRoom==11
+	%Id=whatSayWally
+	;<if neg="1" bitvar="greetedWally">
+	;!Your greeting doesn't matter.
+	;<break />
+	;</if> -->
+	$!GetBitVar(182)
+		!Try pointing out how fake he looks.
+	$!GetBitVar(117)
+		!He wouldn't shoot you, would he?
+		!Taunt him enough and he will realize that he isn't a pirate.
+	!Wally doesn't look like he is pirate material.
+	!Perhaps you could make him quit being a pirate?
+	!Tell him that he is a failure as a pirate.
+?How do I pick up the floating debree?
+	%Id=pickupDebree
+	%Solved=HasItem(335)
+	%Solveable=true
+	%Discovered=GetBitVar(159)
+	!It is too far out for Guybrush to reach it with just his hands.
+	!If only he had something long that he could use to extend his reach.
+	$HasItem(281)
+		!Use the rod+hook combo to pick up the debree.
+	$HasItem(279)
+		!The loading rod is long enough.
+		!But it doesn't catch on to the debree.
+		!Perhaps you could improve it?
+		!Perhaps by attaching something to it?
+		$HasItem(280)
+			!The fake hook is ideal for the job.
+			!Use the hook with the loading rod.
+		!Perhaps there is something inside that you could use?
+		!Wally dropped his fake hook when he started crying.
+		!Pick up the fake hook.
+	!Perhaps there is something long inside?
+	!The cannon loading rod on the wall is long.
+	!Pick up the cannon loading rod.
+?How do I aim this thing?
+	%Priority=2
+	%Solveable=true
+	%Solved=GetBitVar(159)
+	%Discovered=CurrentRoom==10
+	!Mouse up and down to control the launch angle and the resulting launch distance.
+	!Mouse left and right to control the sideways aim.
+	!<special mode="aimAssist" />
+?How do I escape from the ship?
+	%Discovered=CurrentRoom==12
+	%Solveable=true
+	%Solved=false
+	$HasItem(344)
+		!That diamond ring could prove useful.
+		!Ever heard of Mohs scale?
+		!It says that diamonds are the hardest thing.
+		!Hard enough to cut anything.
+		!Including cutting glass.
+		!Like say, the glass in the small porthole on the wall.
+		!Use the diamon ring with the porthole.
+	!Surely there has to be something useful here.
+	$!HasItem(343)
+		!The only thing worth picking up is the small bag
+		!Pick up the bag.
+	!That is one big diamond ring.
+	!Pick it up.
