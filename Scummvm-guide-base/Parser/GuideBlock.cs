@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace Scummvm.Guide.Parser {
 	internal class GuideBlock<TState> : Block<TState> {
-		internal Type StateType;
 		private string GameId;
 
 		internal List<QuestionBlock<TState>> questions;
@@ -22,9 +21,6 @@ namespace Scummvm.Guide.Parser {
 
 		internal override void HandleMetaLine(string metaType, string value) {
 			switch(metaType) {
-				case "StateClass":
-					StateType = Type.GetType(value);
-					break;
 				case "GameId":
 					GameId = value;
 					break;
