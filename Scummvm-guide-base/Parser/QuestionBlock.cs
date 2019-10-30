@@ -50,5 +50,8 @@ namespace Scummvm.Guide.Parser {
 
 			return q;
 		}
+
+
+		public override string ToString() => Title;
 	}
 }
