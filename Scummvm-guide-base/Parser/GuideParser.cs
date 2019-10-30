@@ -85,7 +85,9 @@ namespace Scummvm.Guide.Parser {
 		}
 
 		private void HandleElseBlock(string l) {
-			throw new NotImplementedException();
+			var c = (ConditionBlock<TState>)((BaseHintContainerBlock<TState>)CurrentBlock).hints.Last();
+			var e = new ElseBlock<TState>(c);
+			blockStack.Push(e);
 		}
 
 		private void HandleConditionBlock(string l) {
