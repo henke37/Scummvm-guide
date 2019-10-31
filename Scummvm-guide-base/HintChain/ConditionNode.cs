@@ -12,7 +12,7 @@ namespace Scummvm.Guide.HintChain {
 
 		internal Func<TState, bool> Condition;
 
-		public ConditionNode(Func<TState, bool> condition, BaseHintChainNode<TState> baseHintChainNode) {
+		public ConditionNode(Func<TState, bool> condition, BaseHintChainNode<TState> baseHintChainNode, string id=null) : base(null) {
 			Condition = condition;
 			TrueNext = baseHintChainNode;
 		}
