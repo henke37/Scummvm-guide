@@ -15,6 +15,7 @@ namespace Scummvm.Guide.Parser {
 		}
 
 		internal override BaseHintChainNode<TState> MakeHintChain(GuideParser<TState> guideParser) {
+			if(hints.Count == 0) return null;
 			BaseHintChainNode<TState> root = hints[0].MakeHintChain(guideParser);
 			BaseHintChainNode<TState> currentNode = root;
 			for(int i=1;i<hints.Count;++i) {
