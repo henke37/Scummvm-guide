@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Scummvm.Guide.HintChain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace Scummvm.Guide.Base {
 	public class Question<TState> {
 		public string Title;
 
-		public dynamic Hints;//TODO: decide on hint structuring
+		public BaseHintChainNode<TState> HintChain;
 
 		private readonly Func<TState, bool> discoveredCheck;
 		private readonly Func<TState, bool> solvableCheck;

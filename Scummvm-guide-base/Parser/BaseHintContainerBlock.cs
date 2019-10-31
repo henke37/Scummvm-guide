@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Scummvm.Guide.HintChain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,10 @@ namespace Scummvm.Guide.Parser {
 
 		protected BaseHintContainerBlock() {
 			hints = new List<BaseHintEntry<TState>>();
+		}
+
+		protected BaseHintChainNode<TState> MakeHintChain() {
+			throw new NotImplementedException();
 		}
 	}
 }
