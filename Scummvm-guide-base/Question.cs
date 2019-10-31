@@ -27,5 +27,16 @@ namespace Scummvm.Guide.Base {
 		public bool IsSolved(TState state) => solvedCheck(state);
 
 		public override string ToString() => Title;
+
+		public IEnumerable<HintNode<TState>> GetHintNodes(TState state) {
+			var currentNode = HintChain;
+			while(currentNode!=null) {
+				if(currentNode is HintNode<TState> hint) {
+					yield return hint;
+				}
+				currentNode = currentNode.GetNextNode(state);
+			}
+			yield break;
+		}
 	}
 }
