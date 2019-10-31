@@ -26,11 +26,13 @@ namespace Scummvm.Guide.Parser {
 		}
 
 		internal override BaseHintChainNode<TState> MakeHintChain(GuideParser<TState> guideParser) {
-			return new ConditionNode<TState>(
+			var c=new ConditionNode<TState>(
 				guideParser.MakeEvaluator(Condition),
 				base.MakeHintChain(guideParser),
 				Id
 			);
+			guideParser.AddHintNode(c);
+			return c;
 		}
 	}
 }

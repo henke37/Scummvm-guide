@@ -1,4 +1,5 @@
 ﻿using Scummvm.Guide.Base;
+using Scummvm.Guide.HintChain;
 using System;
 using System.IO;
 
@@ -53,6 +54,13 @@ namespace Scummvm.Guide.Parser {
 			return q;
 		}
 
+
+		internal override BaseHintChainNode<TState> MakeHintChain(GuideParser<TState> guideParser) {
+			guideParser.ClearHintIdCache();
+			var c = base.MakeHintChain(guideParser);
+			guideParser.ApplyHintChainFixup();
+			return c;
+		}
 
 		public override string ToString() => Title;
 	}

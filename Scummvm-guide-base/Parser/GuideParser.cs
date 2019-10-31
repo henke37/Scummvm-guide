@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Scummvm.Guide.HintChain;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,8 +17,11 @@ namespace Scummvm.Guide.Parser {
 
 		internal readonly GuideBlock<TState> guideBlock;
 
+		private Dictionary<string, BaseHintChainNode<TState>> hintNodeIdMap;
+
 		internal GuideParser() {
 			blockStack = new Stack<Block<TState>>();
+			hintNodeIdMap = new Dictionary<string, BaseHintChainNode<TState>>();
 			guideBlock = new GuideBlock<TState>();
 			blockStack.Push(guideBlock);
 		}
@@ -75,6 +79,18 @@ namespace Scummvm.Guide.Parser {
 			}
 
 			return MakeGuide();
+		}
+
+		internal void AddHintNode(BaseHintChainNode<TState> node) {
+			if(node.Id == null) return;
+			hintNodeIdMap[node.Id] = node;
+		}
+
+		internal void ApplyHintChainFixup() {
+		}
+
+		internal void ClearHintIdCache() {
+			hintNodeIdMap.Clear();
 		}
 
 		private dynamic MakeGuide() {
