@@ -11,8 +11,14 @@ namespace Scummvm.Guide.HintChain {
 
 		public string Text;
 
+		public HintNode(string hint) {
+			Text = hint;
+		}
+
 		public override BaseHintChainNode<TState> GetNextNode(TState state) {
 			return next;
 		}
+
+		internal override void SetNextNode(BaseHintChainNode<TState> nextNode) => next = nextNode;
 	}
 }

@@ -48,7 +48,7 @@ namespace Scummvm.Guide.Parser {
 				guideParser.MakeEvaluator(Solved)
 			);
 
-			q.HintChain = MakeHintChain();
+			q.HintChain = MakeHintChain(guideParser);
 
 			return q;
 		}

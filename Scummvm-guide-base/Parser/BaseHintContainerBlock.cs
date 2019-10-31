@@ -14,8 +14,17 @@ namespace Scummvm.Guide.Parser {
 			hints = new List<BaseHintEntry<TState>>();
 		}
 
-		protected BaseHintChainNode<TState> MakeHintChain() {
-			throw new NotImplementedException();
+		internal override BaseHintChainNode<TState> MakeHintChain(GuideParser<TState> guideParser) {
+			BaseHintChainNode<TState> root = hints[0].MakeHintChain(guideParser);
+			BaseHintChainNode<TState> currentNode = root;
+			for(int i=1;i<hints.Count;++i) {
+				var hint = hints[i];
+				var nextNode = hint.MakeHintChain(guideParser);
+				currentNode.SetNextNode(nextNode);
+				currentNode = nextNode;
+			}
+
+			return root;
 		}
 	}
 }

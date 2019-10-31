@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Scummvm.Guide.HintChain {
 	public abstract class BaseHintChainNode<TState> {
 
-		public abstract BaseHintChainNode<TState> GetNextNode(TState state); 
+		public abstract BaseHintChainNode<TState> GetNextNode(TState state);
+		internal abstract void SetNextNode(BaseHintChainNode<TState> nextNode);
 	}
 }

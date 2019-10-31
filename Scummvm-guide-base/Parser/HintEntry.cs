@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Scummvm.Guide.HintChain;
 
 namespace Scummvm.Guide.Parser {
 	internal class HintEntry<TState> : BaseHintEntry<TState> {
@@ -16,6 +17,10 @@ namespace Scummvm.Guide.Parser {
 				default:
 					throw new InvalidDataException("Unknown metaline!");
 			}
+		}
+
+		internal override BaseHintChainNode<TState> MakeHintChain(GuideParser<TState> guideParser) {
+			return new HintNode<TState>(Hint);
 		}
 	}
 }

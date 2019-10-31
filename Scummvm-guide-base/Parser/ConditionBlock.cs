@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Scummvm.Guide.HintChain;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,13 @@ namespace Scummvm.Guide.Parser {
 				default:
 					throw new InvalidDataException("Unknown metaline!");
 			}
+		}
+
+		internal override BaseHintChainNode<TState> MakeHintChain(GuideParser<TState> guideParser) {
+			return new ConditionNode<TState>(
+				guideParser.MakeEvaluator(Condition),
+				base.MakeHintChain(guideParser)
+			);
 		}
 	}
 }
