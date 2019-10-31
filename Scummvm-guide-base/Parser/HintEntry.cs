@@ -20,7 +20,8 @@ namespace Scummvm.Guide.Parser {
 		}
 
 		internal override BaseHintChainNode<TState> MakeHintChain(GuideParser<TState> guideParser) {
-			return new HintNode<TState>(Hint);
+			var h = new HintNode<TState>(Hint,Id);
+			return h;
 		}
 	}
 }
