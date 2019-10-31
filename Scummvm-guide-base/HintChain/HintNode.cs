@@ -20,5 +20,7 @@ namespace Scummvm.Guide.HintChain {
 		}
 
 		internal override void SetNextNode(BaseHintChainNode<TState> nextNode) => next = nextNode;
+
+		public override string ToString() => Text;
 	}
 }
