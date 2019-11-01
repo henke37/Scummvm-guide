@@ -55,7 +55,7 @@ namespace Scummvm.Guide.Parser {
 		}
 
 
-		internal override BaseHintChainNode<TState> MakeHintChain(GuideParser<TState> guideParser) {
+		internal override BaseHintChainNode<TState>? MakeHintChain(GuideParser<TState> guideParser) {
 			guideParser.ClearHintIdCache();
 			var c = base.MakeHintChain(guideParser);
 			guideParser.ApplyHintChainFixup();

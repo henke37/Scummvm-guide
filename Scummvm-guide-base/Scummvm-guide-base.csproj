@@ -8,6 +8,8 @@
 	<TargetFrameworks>net461</TargetFrameworks>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+	<LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net461|AnyCPU'">
     <PlatformTarget>x86</PlatformTarget>

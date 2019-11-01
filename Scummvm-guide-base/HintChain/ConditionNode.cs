@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 namespace Scummvm.Guide.HintChain {
 	public class ConditionNode<TState> : BaseHintChainNode<TState> {
 
-		internal BaseHintChainNode<TState> TrueNext;
-		internal BaseHintChainNode<TState> FalseNext;
+		internal BaseHintChainNode<TState>? TrueNext;
+		internal BaseHintChainNode<TState>? FalseNext;
 
 		internal Func<TState, bool> Condition;
 
-		public ConditionNode(Func<TState, bool> condition, BaseHintChainNode<TState> baseHintChainNode, string id=null) : base(null) {
+		public ConditionNode(Func<TState, bool> condition, BaseHintChainNode<TState>? baseHintChainNode, string? id=null) : base(id) {
 			Condition = condition;
 			TrueNext = baseHintChainNode;
 		}
 
-		public override BaseHintChainNode<TState> GetNextNode(TState state) {
+		public override BaseHintChainNode<TState>? GetNextNode(TState state) {
 			if(Condition(state)) {
 				return TrueNext;
 			} else {
@@ -25,6 +25,6 @@ namespace Scummvm.Guide.HintChain {
 			}
 		}
 
-		internal override void SetNextNode(BaseHintChainNode<TState> nextNode) => FalseNext = nextNode;
+		internal override void SetNextNode(BaseHintChainNode<TState>? nextNode) => FalseNext = nextNode;
 	}
 }

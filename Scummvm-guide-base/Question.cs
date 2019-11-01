@@ -9,7 +9,7 @@ namespace Scummvm.Guide.Base {
 	public class Question<TState> {
 		public string Title;
 
-		public BaseHintChainNode<TState> HintChain;
+		public BaseHintChainNode<TState>? HintChain;
 
 		private readonly Func<TState, bool> discoveredCheck;
 		private readonly Func<TState, bool> solvableCheck;

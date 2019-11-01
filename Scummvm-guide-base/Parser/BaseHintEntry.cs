@@ -7,6 +7,6 @@ namespace Scummvm.Guide.Parser {
 			((BaseHintContainerBlock<TState>)guideParser.CurrentBlock).hints.Add(this);
 		}
 
-		internal abstract BaseHintChainNode<TState> MakeHintChain(GuideParser<TState> guideParser);
+		internal abstract BaseHintChainNode<TState>? MakeHintChain(GuideParser<TState> guideParser);
 	}
 }
