@@ -9,6 +9,7 @@
       Title="WaitUnsupported">
 
     <Grid>
-        
+        <Label Content="Unsupported game" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="48"/>
+
     </Grid>
 </Page>

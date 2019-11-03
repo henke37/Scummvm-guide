@@ -9,6 +9,7 @@
       Title="WaitSelectGame">
 
     <Grid>
-        
+        <Label Content="No game loaded" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="48"/>
+
     </Grid>
 </Page>

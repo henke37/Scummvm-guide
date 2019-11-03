@@ -9,6 +9,7 @@
       Title="WaitConnect">
 
     <Grid>
-        
+        <Label Content="ScummVm not detected" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="48"/>
+
     </Grid>
 </Page>
