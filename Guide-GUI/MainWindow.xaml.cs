@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using Page = System.Windows.Controls.Page;
 
 namespace Guide_GUI {
@@ -25,9 +25,9 @@ namespace Guide_GUI {
 	public partial class MainWindow : Window {
 
 		private ScummVMConnector connector;
-		private Timer updateTimer;
 
 		private BaseEngineAccessor engine;
+		private DispatcherTimer updateTimer;
 
 		public MainWindow() {
 			InitializeComponent();
@@ -36,13 +36,14 @@ namespace Guide_GUI {
 
 			UpdateState();
 
-			updateTimer = new Timer(100);
-			updateTimer.Elapsed += UpdateTimer_Elapsed;
+			updateTimer = new DispatcherTimer();
+			updateTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
+			updateTimer.Tick += UpdateTimer_Tick;
 			updateTimer.Start();
 		}
 
-		private void UpdateTimer_Elapsed(object sender, ElapsedEventArgs e) {
-			this.Dispatcher.Invoke(UpdateState);
+		private void UpdateTimer_Tick(object sender, EventArgs e) {
+			UpdateState();
 		}
 
 		private void UpdateState() {
