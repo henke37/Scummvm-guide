@@ -68,6 +68,15 @@ namespace Guide_GUI {
 				ForcePage(typeof(WaitSelectGame));
 				return;
 			}
+
+			SetupForGame();
+		}
+
+		private void SetupForGame() {
+			if(engine.GameId!="comi") {
+				ForcePage(typeof(WaitUnsupported));
+				return;
+			}
 		}
 
 		private void ForcePage(Type type) {
