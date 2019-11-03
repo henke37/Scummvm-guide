@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scummvm-guide-base", "Scumm
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrainLib", "..\..\scummvm-braindrain\DrainLib\DrainLib\DrainLib.csproj", "{3FADAE26-5A97-4B46-9730-6BF8502633E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuideTest", "GuideTest\GuideTest.csproj", "{D3FFFD9F-9F68-409E-AF6A-AC9184FA840A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuideTest", "GuideTest\GuideTest.csproj", "{D3FFFD9F-9F68-409E-AF6A-AC9184FA840A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DebugHelp", "..\..\DebugHelp\DebugHelp\DebugHelp.csproj", "{F95563D3-569B-4D59-BD8B-C9E69CD62FB7}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Win32Base", "..\..\DebugHelp\Win32Base\Win32Base.csproj", "{95822F78-337A-4DBF-8966-0E553A74359E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Win32ProcessAccess", "..\..\DebugHelp\Win32ProcessAccess\Win32ProcessAccess.csproj", "{E57BAFA0-7748-4011-913D-1258E90AF6C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guide-GUI", "Guide-GUI\Guide-GUI.csproj", "{5BB6028B-FBDE-4C9A-8102-85196873C16E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -115,6 +117,18 @@ Global
 		{E57BAFA0-7748-4011-913D-1258E90AF6C2}.Release|x64.Build.0 = Release|x64
 		{E57BAFA0-7748-4011-913D-1258E90AF6C2}.Release|x86.ActiveCfg = Release|x86
 		{E57BAFA0-7748-4011-913D-1258E90AF6C2}.Release|x86.Build.0 = Release|x86
+		{5BB6028B-FBDE-4C9A-8102-85196873C16E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BB6028B-FBDE-4C9A-8102-85196873C16E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BB6028B-FBDE-4C9A-8102-85196873C16E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5BB6028B-FBDE-4C9A-8102-85196873C16E}.Debug|x64.Build.0 = Debug|Any CPU
+		{5BB6028B-FBDE-4C9A-8102-85196873C16E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5BB6028B-FBDE-4C9A-8102-85196873C16E}.Debug|x86.Build.0 = Debug|Any CPU
+		{5BB6028B-FBDE-4C9A-8102-85196873C16E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BB6028B-FBDE-4C9A-8102-85196873C16E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BB6028B-FBDE-4C9A-8102-85196873C16E}.Release|x64.ActiveCfg = Release|Any CPU
+		{5BB6028B-FBDE-4C9A-8102-85196873C16E}.Release|x64.Build.0 = Release|Any CPU
+		{5BB6028B-FBDE-4C9A-8102-85196873C16E}.Release|x86.ActiveCfg = Release|Any CPU
+		{5BB6028B-FBDE-4C9A-8102-85196873C16E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
