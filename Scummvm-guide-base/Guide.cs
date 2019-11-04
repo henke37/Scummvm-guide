@@ -22,13 +22,13 @@ namespace Scummvm.Guide.Base {
 			questions = new List<Question<TState>>();
 		}
 
-		public static dynamic Parse(Stream s,Encoding enc,bool closeAfterRead=true) {
+		public static Guide<TState> Parse(Stream s,Encoding enc,bool closeAfterRead=true) {
 			using(var r=new StreamReader(s, enc, false, 0, closeAfterRead)) {
 				return Parse(r);
 			}
 		}
 
-		public static dynamic Parse(TextReader r) {
+		public static Guide<TState> Parse(TextReader r) {
 			var p = new GuideParser<TState>();
 			return p.Parse(r);
 		}
