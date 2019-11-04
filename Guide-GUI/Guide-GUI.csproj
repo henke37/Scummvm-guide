@@ -134,6 +134,10 @@
       <Project>{F95563D3-569B-4D59-BD8B-C9E69CD62FB7}</Project>
       <Name>DebugHelp</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\HenkesUtils\FilterCollection\FilterCollection.csproj">
+      <Project>{edcdc902-b0c9-4785-9d8f-85f17649b409}</Project>
+      <Name>FilterCollection</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\scummvm-braindrain\DrainLib\DrainLib\DrainLib.csproj">
       <Project>{3FADAE26-5A97-4B46-9730-6BF8502633E8}</Project>
       <Name>DrainLib</Name>

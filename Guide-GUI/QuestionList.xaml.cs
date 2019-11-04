@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Henke37.Collections.Filtered;
 using Page = System.Windows.Controls.Page;
 
 namespace Guide_GUI {
@@ -26,25 +27,34 @@ namespace Guide_GUI {
 		private readonly MainWindow Main;
 
 		private ScummState GameState => Main.GameState;
-		private IEnumerable<Question<ScummState>> Questions => Main.guide.questions;
+		private List<Question<ScummState>> Questions => Main.guide.questions;
+
+		private FilterCollection<Question<ScummState>, ScummState> filterCollection;
 
 		public QuestionList(MainWindow main) {
 			InitializeComponent();
 
 			Main = main;
+			Main.GameStateChanged += Main_GameStateChanged;
 
-			QuestionListBox.ItemsSource = GetApplicableQuestions();
+			QuestionListBox.ItemsSource = filterCollection = new FilterCollection<Question<ScummState>, ScummState>(
+				Questions,
+				Filter,
+				null
+			);
 		}
 
-		private IEnumerable GetApplicableQuestions() {
-			foreach(var question in Questions) {
+		private void Main_GameStateChanged() {
+			filterCollection.FilterArg = Main.GameState;
+		}
 
-				if(!question.IsDiscovered(GameState)) continue;
-				if(question.IsSolved(GameState)) continue;
+		private static bool Filter(Question<ScummState> question,ScummState state) {
+			if(state == null) return false;
 
-				yield return question;
-			}
-			yield break;
+			if(!question.IsDiscovered(state)) return false;
+			if(question.IsSolved(state)) return false;
+
+			return true;
 		}
 	}
 }

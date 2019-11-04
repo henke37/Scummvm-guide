@@ -35,6 +35,8 @@ namespace Guide_GUI {
 		internal Guide<ScummState> guide;
 		internal ScummState GameState;
 
+		internal event Action GameStateChanged;
+
 		public MainWindow() {
 			InitializeComponent();
 
@@ -84,6 +86,7 @@ namespace Guide_GUI {
 
 		private void UpdateGameState() {
 			GameState = ((ScummEngineAccessor)engine).GetScummState();
+			GameStateChanged?.Invoke();
 		}
 
 		private void SetupForGame() {
