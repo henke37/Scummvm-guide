@@ -30,8 +30,10 @@ namespace Guide_GUI {
 
 		private BaseEngineAccessor engine;
 		private DispatcherTimer updateTimer;
-		private Guide<ScummState> guide;
 		private Frame frame;
+
+		internal Guide<ScummState> guide;
+		internal ScummState GameState;
 
 		public MainWindow() {
 			InitializeComponent();
@@ -62,6 +64,7 @@ namespace Guide_GUI {
 			}
 
 			if(engine!=null && engine.IsActiveEngine) {
+				UpdateGameState();
 				return;
 			}
 			try { 
@@ -74,7 +77,13 @@ namespace Guide_GUI {
 				return;
 			}
 
+			UpdateGameState();
+
 			SetupForGame();
+		}
+
+		private void UpdateGameState() {
+			GameState = ((ScummEngineAccessor)engine).GetScummState();
 		}
 
 		private void SetupForGame() {
@@ -83,11 +92,11 @@ namespace Guide_GUI {
 				return;
 			}
 
-			guide=Guide<ScummState>.Parse(File.OpenText("comi.txt"));
+			guide=Guide<ScummState>.Parse(File.OpenText("Guides\\comi.txt"));
 
 			frame = new Frame();
 			this.Content = frame;
-			frame.Navigate(new QuestionList());
+			frame.Navigate(new QuestionList(this));
 		}
 
 		private void ForcePage(Type type) {

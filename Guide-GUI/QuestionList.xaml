@@ -9,6 +9,7 @@
       Title="QuestionList">
 
     <Grid>
-        
+        <ListBox x:Name="QuestionListBox" />
+
     </Grid>
 </Page>
