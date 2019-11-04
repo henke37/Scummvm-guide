@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="QuestionList.xaml.cs">
+      <DependentUpon>QuestionList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WaitConnect.xaml.cs">
       <DependentUpon>WaitConnect.xaml</DependentUpon>
     </Compile>
@@ -79,6 +82,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="QuestionList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WaitConnect.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -130,6 +137,10 @@
     <ProjectReference Include="..\..\..\scummvm-braindrain\DrainLib\DrainLib\DrainLib.csproj">
       <Project>{3FADAE26-5A97-4B46-9730-6BF8502633E8}</Project>
       <Name>DrainLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Scummvm-guide-base\Scummvm-guide-base.csproj">
+      <Project>{44AD0B49-B158-44A7-923C-5CA672ABE1A7}</Project>
+      <Name>Scummvm-guide-base</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

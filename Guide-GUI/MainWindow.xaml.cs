@@ -1,8 +1,10 @@
 ﻿using DrainLib;
 using DrainLib.Engines;
 using Henke37.DebugHelp;
+using Scummvm.Guide.Base;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +30,8 @@ namespace Guide_GUI {
 
 		private BaseEngineAccessor engine;
 		private DispatcherTimer updateTimer;
+		private Guide<ScummState> guide;
+		private Frame frame;
 
 		public MainWindow() {
 			InitializeComponent();
@@ -78,6 +82,12 @@ namespace Guide_GUI {
 				ForcePage(typeof(WaitUnsupported));
 				return;
 			}
+
+			guide=Guide<ScummState>.Parse(File.OpenText("comi.txt"));
+
+			frame = new Frame();
+			this.Content = frame;
+			frame.Navigate(new QuestionList());
 		}
 
 		private void ForcePage(Type type) {
