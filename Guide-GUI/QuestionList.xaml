@@ -13,8 +13,9 @@
         <ListView x:Name="QuestionListBox">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <WrapPanel>
-                        <TextBlock Text="{Binding Title}" />
+                    <Button Click="Question_Click">
+                        <TextBlock Text="{Binding Title}"/>
+                    </Button>
 
                         <!--
                         <i:Interaction.Triggers>
@@ -24,7 +25,6 @@
                         </i:Interaction.Triggers>
                         <Button.Template>
                         </Button.Template> -->
-                    </WrapPanel>
                 </DataTemplate>
                     
             </ListView.ItemTemplate>

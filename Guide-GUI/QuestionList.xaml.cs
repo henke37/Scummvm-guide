@@ -61,5 +61,11 @@ namespace Guide_GUI {
 			var hintList = new QuestionDetailsPage(question);
 			Main.NavigateToPage(hintList);
 		}
+
+		private void Question_Click(object sender, RoutedEventArgs e) {
+			var button=(Button)sender;
+			var question = (Question<ScummState>)button.DataContext;
+			SwitchToQuestion(question);
+		}
 	}
 }
