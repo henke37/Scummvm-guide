@@ -59,6 +59,8 @@ namespace Guide_GUI {
 				try {
 					connector.Connect();
 				} catch(IncompleteReadException) {
+					ForcePage(typeof(WaitConnect));
+					return;
 				} catch(ProcessNotFoundException) {
 					ForcePage(typeof(WaitConnect));
 					return;
@@ -85,8 +87,10 @@ namespace Guide_GUI {
 		}
 
 		private void UpdateGameState() {
-			GameState = ((ScummEngineAccessor)engine).GetScummState();
-			GameStateChanged?.Invoke();
+			try {
+				GameState = ((ScummEngineAccessor)engine).GetScummState();
+				GameStateChanged?.Invoke();
+			} catch(IncompleteReadException) { }
 		}
 
 		private void SetupForGame() {
