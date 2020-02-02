@@ -113,6 +113,10 @@ namespace Guide_GUI {
 			Content = p;
 		}
 
+		public void NavigateToPage(Page page) {
+			frame.Navigate(page);
+		}
+
 		private void NavigationWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
 			updateTimer.Stop();
 		}

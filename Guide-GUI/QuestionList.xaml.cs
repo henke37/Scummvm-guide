@@ -56,5 +56,10 @@ namespace Guide_GUI {
 
 			return true;
 		}
+
+		private void SwitchToQuestion(Question<ScummState> question) {
+			var hintList = new QuestionDetailsPage(question);
+			Main.NavigateToPage(hintList);
+		}
 	}
 }
