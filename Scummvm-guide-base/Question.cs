@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Scummvm.Guide.Base {
 	public class Question<TState> {
-		public string Title;
+		private string _title;
 
 		public BaseHintChainNode<TState>? HintChain;
 
@@ -15,8 +15,10 @@ namespace Scummvm.Guide.Base {
 		private readonly Func<TState, bool> solvableCheck;
 		private readonly Func<TState, bool> solvedCheck;
 
+		public string Title { get => _title; set => _title = value; }
+
 		public Question(string title, Func<TState, bool> discoveredCheck, Func<TState, bool> solvableCheck, Func<TState, bool> solvedCheck) {
-			Title = title ?? throw new ArgumentNullException(nameof(title));
+			_title = title ?? throw new ArgumentNullException(nameof(title));
 			this.discoveredCheck = discoveredCheck ?? throw new ArgumentNullException(nameof(discoveredCheck));
 			this.solvableCheck = solvableCheck ?? throw new ArgumentNullException(nameof(solvableCheck));
 			this.solvedCheck = solvedCheck ?? throw new ArgumentNullException(nameof(solvedCheck));

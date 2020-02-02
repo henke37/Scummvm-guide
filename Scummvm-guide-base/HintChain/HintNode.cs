@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Scummvm.Guide.HintChain {
 	public class HintNode<TState> : BaseHintChainNode<TState> {
 
 		private BaseHintChainNode<TState>? next;
 
-		public string Text;
+		private string _text;
+
+		public string Text { get => _text; set => _text = value; }
 
 		public HintNode(string hint, string? id=null) : base(id) {
-			Text = hint;
+			_text = hint;
 		}
 
 		public override BaseHintChainNode<TState>? GetNextNode(TState state) {

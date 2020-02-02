@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Scummvm.Guide.HintChain {
 	public abstract class BaseHintChainNode<TState> {
 
-		public string? Id;
+		private string? _id;
 
 		protected BaseHintChainNode(string? id) {
-			Id = id;
+			_id = id;
 		}
+
+		public string? Id { get => _id; set => _id = value; }
 
 		public abstract BaseHintChainNode<TState>? GetNextNode(TState state);
 		internal abstract void SetNextNode(BaseHintChainNode<TState>? nextNode);
