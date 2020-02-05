@@ -13,6 +13,8 @@ namespace Guide_GUI {
 		public QuestionDetailsPage(Question<DrainLib.Engines.ScummState> question) {
 			InitializeComponent();
 			this.question = question;
+
+			this.Title = question.Title;
 		}
 	}
 }
