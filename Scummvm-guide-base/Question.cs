@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Scummvm.Guide.Base {
-	public class Question<TState> {
+	public class Question<TState> : IEquatable<Question<TState>> {
 		private string _title;
 
 		public BaseHintChainNode<TState>? HintChain;
@@ -39,6 +39,11 @@ namespace Scummvm.Guide.Base {
 				currentNode = currentNode.GetNextNode(state);
 			}
 			yield break;
+		}
+
+		public bool Equals(Question<TState> other) {
+			if(other is null) return false;
+			return Title == other.Title;
 		}
 	}
 }
