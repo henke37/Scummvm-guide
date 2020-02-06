@@ -30,6 +30,7 @@ namespace Guide_GUI {
 		private List<Question<ScummState>> Questions => Main.guide.questions;
 
 		private FilterCollection<Question<ScummState>, ScummState> filterCollection;
+		private DiffingCollection<Question<ScummState>> diffCollection;
 
 		public QuestionList(MainWindow main) {
 			InitializeComponent();
@@ -37,11 +38,15 @@ namespace Guide_GUI {
 			Main = main;
 			Main.GameStateChanged += Main_GameStateChanged;
 
-			QuestionListBox.ItemsSource = filterCollection = new FilterCollection<Question<ScummState>, ScummState>(
+			 filterCollection = new FilterCollection<Question<ScummState>, ScummState>(
 				Questions,
 				Filter,
 				null
 			);
+
+			diffCollection = new DiffingCollection<Question<ScummState>>(filterCollection);
+
+			QuestionListBox.ItemsSource = diffCollection;
 		}
 
 		private void Main_GameStateChanged() {
