@@ -98,7 +98,7 @@ namespace Scummvm.Guide.Parser {
 
 			foreach(var questionBlock in guideBlock.questions) {
 				var q = questionBlock.MakeQuestion(this);
-				guide.questions.Add(q);
+				guide.questions.Add(q.Id,q);
 			}
 
 			return guide;

@@ -42,7 +42,7 @@ namespace Scummvm.Guide.Parser {
 		}
 
 		internal Question<TState> MakeQuestion(GuideParser<TState> guideParser) {
-			var q= new Question<TState>(
+			var q= new Question<TState>(Id,
 				Title,
 				guideParser.MakeEvaluator(Discovered),
 				guideParser.MakeEvaluator(Solveable),

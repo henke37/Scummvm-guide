@@ -27,7 +27,7 @@ namespace Guide_GUI {
 		private readonly MainWindow Main;
 
 		private ScummState GameState => Main.GameState;
-		private List<Question<ScummState>> Questions => Main.guide.questions;
+		private Dictionary<string,Question<ScummState>> Questions => Main.guide.questions;
 
 		private FilterCollection<Question<ScummState>, ScummState> filterCollection;
 		private DiffingCollection<Question<ScummState>> diffCollection;
@@ -39,7 +39,7 @@ namespace Guide_GUI {
 			Main.GameStateChanged += Main_GameStateChanged;
 
 			 filterCollection = new FilterCollection<Question<ScummState>, ScummState>(
-				Questions,
+				Questions.Values,
 				Filter,
 				null
 			);

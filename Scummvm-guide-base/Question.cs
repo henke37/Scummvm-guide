@@ -16,8 +16,10 @@ namespace Scummvm.Guide.Base {
 		private readonly Func<TState, bool> solvedCheck;
 
 		public string Title { get => _title; set => _title = value; }
+		public string Id { get; internal set; }
 
-		public Question(string title, Func<TState, bool> discoveredCheck, Func<TState, bool> solvableCheck, Func<TState, bool> solvedCheck) {
+		public Question(string id, string title, Func<TState, bool> discoveredCheck, Func<TState, bool> solvableCheck, Func<TState, bool> solvedCheck) {
+			Id = id ?? throw new ArgumentNullException(nameof(id));
 			_title = title ?? throw new ArgumentNullException(nameof(title));
 			this.discoveredCheck = discoveredCheck ?? throw new ArgumentNullException(nameof(discoveredCheck));
 			this.solvableCheck = solvableCheck ?? throw new ArgumentNullException(nameof(solvableCheck));

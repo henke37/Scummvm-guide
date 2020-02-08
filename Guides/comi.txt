@@ -4,12 +4,14 @@ DynaGuide
 	%Solved = CurrentRoom!=87
 	%Solveable=true
 	%Discovered=true
+	%Id=DifficultySelect
 	!From a joke perspective, they are mostly identical.
 	!But from a puzzle perspective, Mega Monkey gives by far the best experience.
 ?How do I get out of here?
 	%Solved=CurrentRoom!=9 &&CurrentRoom!=11 &&CurrentRoom!=10
 	%Solveable=true
 	%Discovered=CurrentRoom==9 ||CurrentRoom==11
+	%Id=LeaveCannonRoom
 	!There are only two rooms that you can go to, shouldn't be too hard bumbling your way thru this.
 	!There is an obvious locked door on the right side, perhaps that would work?
 	!While mildy entertaining, just asking for it to be unlocked isn't going to work.
@@ -78,6 +80,7 @@ DynaGuide
 	%Solveable=true
 	%Solved=GetBitVar(159)
 	%Discovered=CurrentRoom==10
+	%Id=AimCannon
 	!Mouse up and down to control the launch angle and the resulting launch distance.
 	!Mouse left and right to control the sideways aim.
 	!<special mode="aimAssist" />
@@ -85,6 +88,7 @@ DynaGuide
 	%Discovered=CurrentRoom==12
 	%Solveable=true
 	%Solved=false
+	%Id=EscapeCargoHold
 	$HasItem(344)
 		!That diamond ring could prove useful.
 		!Ever heard of Mohs scale?

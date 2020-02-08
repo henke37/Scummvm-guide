@@ -117,6 +117,10 @@ namespace Guide_GUI {
 			frame.Navigate(page);
 		}
 
+		public void NavigateToQuestion(string id) {
+			var question = guide[id];
+		}
+
 		private void NavigationWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
 			updateTimer.Stop();
 		}

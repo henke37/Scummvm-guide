@@ -13,13 +13,17 @@ namespace Scummvm.Guide.Base {
 
 	public class Guide<TState> {
 
-		public List<Question<TState>> questions;
+		public Dictionary<string,Question<TState>> questions;
 
 		public string GameId;
 
 		public Guide(string gameId) {
 			GameId = gameId;
-			questions = new List<Question<TState>>();
+			questions = new Dictionary<string, Question<TState>>();
+		}
+
+		public Question<TState> this[string id] {
+			get => questions[id];
 		}
 
 		public static Guide<TState> Parse(Stream s,Encoding enc,bool closeAfterRead=true) {
