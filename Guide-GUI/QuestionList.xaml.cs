@@ -63,7 +63,7 @@ namespace Guide_GUI {
 		}
 
 		private void SwitchToQuestion(Question<ScummState> question) {
-			var hintList = new QuestionDetailsPage(question);
+			var hintList = new QuestionDetailsPage(question, Main);
 			Main.NavigateToPage(hintList);
 		}
 

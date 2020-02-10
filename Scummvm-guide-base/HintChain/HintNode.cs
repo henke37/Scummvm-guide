@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace Scummvm.Guide.HintChain {
-	public class HintNode<TState> : BaseHintChainNode<TState> {
+	public class HintNode<TState> : BaseHintChainNode<TState>, IEquatable<HintNode<TState>> {
 
 		private BaseHintChainNode<TState>? next;
 
@@ -20,5 +20,11 @@ namespace Scummvm.Guide.HintChain {
 		internal override void SetNextNode(BaseHintChainNode<TState>? nextNode) => next = nextNode;
 
 		public override string ToString() => Text;
+
+		public bool Equals(HintNode<TState> other) {
+			if(_text != other._text) return false;
+			if(next != other.next) return false;
+			return true;
+		}
 	}
 }
