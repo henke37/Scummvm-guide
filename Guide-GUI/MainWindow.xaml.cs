@@ -67,6 +67,8 @@ namespace Guide_GUI {
 				}
 			}
 
+			connector.ClearCache();
+
 			if(engine!=null && engine.IsActiveEngine) {
 				UpdateGameState();
 				return;
